@@ -16,8 +16,8 @@ export const PointInputs = props => {
               type="number"
               min="1000"
               max="1000"
-              value={coord.value}
-              onChange={e => handleCoordinateChange(coord.name, e.target.value)}
+              value={coordinates[coord]}
+              onChange={e => handleCoordinateChange(coord, e.target.value)}
             />
           </div>
         ))}

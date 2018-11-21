@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 
 export const PointView = props => {
   const { point, className } = props;
+  const { color, ...coordinates } = point;
   return (
     <div className={"PointView " + className}>
       <div className="d-flex align-items-center">
@@ -14,15 +15,12 @@ export const PointView = props => {
           style={{ backgroundColor: point.color }}
         />
 
-        <div className="d-flex mx-2">
-          <div className="mx-1">X:</div>
-          <div>{point.x}</div>
-        </div>
-
-        <div className="d-flex mx-2">
-          <div className="mx-1">Y:</div>
-          <div>{point.y}</div>
-        </div>
+        {Object.keys(coordinates).map(coord => (
+          <div className="d-flex mx-2">
+            <div className="mx-1">{coord + ":"}</div>
+            <div>{coordinates[coord]}</div>
+          </div>
+        ))}
       </div>
     </div>
   );
