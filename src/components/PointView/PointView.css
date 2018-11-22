@@ -1,3 +1,7 @@
+.PointView {
+  width: 150px;
+}
+
 .PointView__color {
   width: 1.5rem;
   height: 1.5rem;
