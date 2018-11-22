@@ -1,9 +1,12 @@
 import { pointsConstants, colors } from "./../constants";
 
+import { removeArrayItem } from "./../helpers";
+
 export function pointsReducer(state = { points: [] }, action) {
   switch (action.type) {
     case pointsConstants.ADD_POINT:
       let newPoint = action.point;
+      newPoint.id = state.points.length;
       const colorsKeys = Object.keys(colors);
       let randomColorKey =
         colorsKeys[Math.floor(Math.random() * colorsKeys.length)];
@@ -13,14 +16,17 @@ export function pointsReducer(state = { points: [] }, action) {
         ...state,
         points: [...state.points, action.point]
       };
+
     case pointsConstants.REMOVE_POINT:
       const removedIndex = state.points.findIndex(
         point => point.id === action.id
       );
 
+      state.points.slice(0, removedIndex).slice(removedIndex + 1);
+
       return {
         ...state,
-        points: state.points.slice(0, removedIndex).slice(removedIndex + 1)
+        points: removeArrayItem(state.points, removedIndex)
       };
     case pointsConstants.PATCH_POINT:
       const patchedIndex = state.points.findIndex(
