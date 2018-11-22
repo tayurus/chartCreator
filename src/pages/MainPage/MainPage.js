@@ -13,7 +13,7 @@ import { fields } from "./../../constants";
 
 import { connect } from "react-redux";
 
-import { pointActions } from "./../actions";
+import { pointsActions } from "./../../actions";
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -43,17 +43,17 @@ class MainPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { points } = state;
+  const { points } = state.pointsReducer;
 
   return { points };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    addPoint: point => dispatch(pointActions.addPoint(point)),
-    removePoint: pointId => dispatch(pointActions.removePoint(pointId)),
-    patchPoint: (pointId, newPointData) =>
-      dispatch(pointActions.patchPoint(pointId, newPointData))
+    addPoint: point => dispatch(pointsActions.addPoint(point)),
+    removePoint: id => dispatch(pointsActions.removePoint(id)),
+    patchPoint: (id, newPointData) =>
+      dispatch(pointsActions.patchPoint(id, newPointData))
   };
 }
 
