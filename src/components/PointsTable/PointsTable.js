@@ -4,7 +4,7 @@ import "./PointsTable.css";
 
 import { generateKey } from "./../../helpers";
 
-import { PointView } from "./../index";
+import { Point } from "./../index";
 
 export const PointsTable = props => {
   const { points, removePoint, patchPoint } = props;
@@ -12,7 +12,8 @@ export const PointsTable = props => {
   return (
     <div className="PointsTable">
       {points.map((point, index) => (
-        <PointView
+        <Point
+          className="m-2"
           key={generateKey(index)}
           point={point}
           removePoint={removePoint}

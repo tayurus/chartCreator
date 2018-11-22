@@ -18,6 +18,7 @@ export class PointAdd extends React.Component {
     this.handleCoordinateChange = this.handleCoordinateChange.bind(this);
     this.toggleAddMode = this.toggleAddMode.bind(this);
     this.clearCoordinatesInState = this.clearCoordinatesInState.bind(this);
+    this.handleAddPointClick = this.handleAddPointClick.bind(this);
   }
 
   componentWillMount() {
@@ -37,12 +38,18 @@ export class PointAdd extends React.Component {
     this.clearCoordinatesInState();
   }
 
-  render() {
-    const { inAddMode, ...coordinates } = this.state;
+  handleAddPointClick() {
     const { addPoint } = this.props;
+    const { inAddMode, ...newPoint } = this.state;
+    addPoint(newPoint);
+  }
+
+  render() {
+    const { className } = this.props;
+    const { inAddMode, ...coordinates } = this.state;
 
     return (
-      <div className="PointAdd">
+      <div className={"PointAdd " + className}>
         {!inAddMode ? (
           <button className="btn btn-success" onClick={this.toggleAddMode}>
             Add point
@@ -54,7 +61,10 @@ export class PointAdd extends React.Component {
               handleCoordinateChange={this.handleCoordinateChange}
             />
             <div className="d-flex">
-              <button className="btn btn-success mx-2" onClick={addPoint}>
+              <button
+                className="btn btn-success mx-2"
+                onClick={this.handleAddPointClick}
+              >
                 ✓
               </button>
               <button

@@ -30,7 +30,7 @@ class MainPage extends React.Component {
     return (
       <div className="MainPage">
         <div>
-          <PointAdd fields={fields} addPoint={addPoint} />
+          <PointAdd fields={fields} className="m-4" addPoint={addPoint} />
           <PointsTable
             points={points}
             removePoint={removePoint}

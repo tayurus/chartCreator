@@ -1,8 +1,14 @@
-import { pointsConstants } from "./../constants";
+import { pointsConstants, colors } from "./../constants";
 
 export function pointsReducer(state = { points: [] }, action) {
   switch (action.type) {
     case pointsConstants.ADD_POINT:
+      let newPoint = action.point;
+      const colorsKeys = Object.keys(colors);
+      let randomColorKey =
+        colorsKeys[Math.floor(Math.random() * colorsKeys.length)];
+      newPoint["color"] = colors[randomColorKey];
+
       return {
         ...state,
         points: [...state.points, action.point]
