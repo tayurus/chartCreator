@@ -8,12 +8,13 @@ export const PointInputs = props => {
   const { className, coordinates, handleCoordinateChange } = props;
   return (
     <div className={"PointInputs " + className}>
-      <div className="d-flex flex-wrap">
+      <div className="d-flex">
         {Object.keys(coordinates).map(coord => (
-          <div className="d-flex align-items-center">
-            <div className="mx-1">{coord}</div>
+          <div className="d-flex align-items-center mx-3">
+            <div className="mx-3">{coord}</div>
             <input
               type="number"
+              className="PointInputs__field"
               min="0"
               max="1000"
               value={coordinates[coord]}

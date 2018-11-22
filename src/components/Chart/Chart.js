@@ -5,13 +5,8 @@ import "./Chart.css";
 import * as d3 from "d3";
 
 export class Chart extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidUpdate() {
     const dataset = this.props.points;
-    console.log("dataset = ", dataset);
     const w = document.querySelector(".Chart").offsetWidth;
     const h = document.querySelector(".Chart").offsetHeight;
 
@@ -28,8 +23,10 @@ export class Chart extends React.Component {
       .range([h - padding, padding]);
 
     d3.select(".Chart")
-      .select("svg")
+      .selectAll("svg")
       .remove();
+
+    setTimeout(() => {});
 
     const svg = d3
       .select(".Chart")
