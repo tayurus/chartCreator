@@ -11,7 +11,7 @@ import {
 } from "./../../components";
 import { fields } from "./../../constants";
 
-import connect from "react-redux";
+import { connect } from "react-redux";
 
 import { pointActions } from "./../actions";
 
