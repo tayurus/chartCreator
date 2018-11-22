@@ -7,7 +7,8 @@ import {
   PointInputs,
   PointAdd,
   Point,
-  PointsTable
+  PointsTable,
+  Chart
 } from "./../../components";
 import { fields } from "./../../constants";
 
@@ -36,6 +37,9 @@ class MainPage extends React.Component {
             removePoint={removePoint}
             patchPoint={patchPoint}
           />
+        </div>
+        <div>
+          <Chart points={points} />
         </div>
       </div>
     );

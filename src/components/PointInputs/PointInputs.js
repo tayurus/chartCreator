@@ -14,10 +14,12 @@ export const PointInputs = props => {
             <div className="mx-1">{coord}</div>
             <input
               type="number"
-              min="1000"
+              min="0"
               max="1000"
               value={coordinates[coord]}
-              onChange={e => handleCoordinateChange(coord, e.target.value)}
+              onChange={e =>
+                handleCoordinateChange(coord, parseInt(e.target.value))
+              }
             />
           </div>
         ))}
