@@ -1,7 +1,7 @@
 import React from "react";
 
-import { PointView, PointInputs } from "./../../components";
-import { Point } from "./../../components";
+import { PointView, PointInputs, PointAdd, Point } from "./../../components";
+import { fields } from "./../../constants";
 
 export class MainPage extends React.Component {
   constructor(props) {
@@ -9,11 +9,11 @@ export class MainPage extends React.Component {
   }
 
   render() {
-    const p = { color: "tomato", x: 4, y: 5, z: 1 };
+    const p = { color: "tomato", x: 4, y: 5 };
 
     return (
       <div className="MainPage">
-        <Point point={p} />
+        <PointAdd fields={fields} />
       </div>
     );
   }
@@ -22,3 +22,4 @@ export class MainPage extends React.Component {
 //
 // <PointView point={{ color: "tomato", x: 4, y: 5 }} />
 // <PointInputs coordinates={{ x: 4, y: 5 }} />
+// <Point point={p} />
