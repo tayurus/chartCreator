@@ -21,7 +21,11 @@ class MainPage extends React.Component {
   }
 
   render() {
+    // actions
     const { addPoint, removePoint, patchPoint } = this.props;
+
+    //data
+    const { points } = this.props;
 
     return (
       <div className="MainPage">

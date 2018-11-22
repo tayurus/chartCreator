@@ -65,7 +65,12 @@ export class Point extends React.Component {
               handleCoordinateChange={this.handleCoordinateChange}
             />
             <div className="d-flex">
-              <button className="btn btn-success mx-2">✓</button>
+              <button
+                className="btn btn-success mx-2"
+                onClick={() => patchPoint(id, point)}
+              >
+                ✓
+              </button>
               <button
                 className="btn btn-primary mx-2"
                 onClick={this.toggleEditMode}
