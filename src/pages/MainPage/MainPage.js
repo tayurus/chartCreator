@@ -1,25 +1,61 @@
 import React from "react";
 
-import { PointView, PointInputs, PointAdd, Point } from "./../../components";
+import "./MainPage.css";
+
+import {
+  PointView,
+  PointInputs,
+  PointAdd,
+  Point,
+  PointsTable
+} from "./../../components";
 import { fields } from "./../../constants";
 
-export class MainPage extends React.Component {
+import connect from "react-redux";
+
+import { pointActions } from "./../actions";
+
+class MainPage extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const p = { color: "tomato", x: 4, y: 5 };
+    const { addPoint, removePoint, patchPoint } = this.props;
 
     return (
       <div className="MainPage">
-        <PointAdd fields={fields} />
+        <div>
+          <PointAdd fields={fields} addPoint={addPoint} />
+          <PointsTable
+            points={points}
+            removePoint={removePoint}
+            patchPoint={patchPoint}
+          />
+        </div>
       </div>
     );
   }
 }
 
-//
-// <PointView point={{ color: "tomato", x: 4, y: 5 }} />
-// <PointInputs coordinates={{ x: 4, y: 5 }} />
-// <Point point={p} />
+function mapStateToProps(state) {
+  const { points } = state;
+
+  return { points };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addPoint: point => dispatch(pointActions.addPoint(point)),
+    removePoint: pointId => dispatch(pointActions.removePoint(pointId)),
+    patchPoint: (pointId, newPointData) =>
+      dispatch(pointActions.patchPoint(pointId, newPointData))
+  };
+}
+
+const connectedComponent = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MainPage);
+
+export { connectedComponent as MainPage };

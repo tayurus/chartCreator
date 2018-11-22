@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./PointAdd.css";
+
 import { PointInputs } from "./../index";
 
 import PropTypes from "prop-types";
@@ -37,6 +39,7 @@ export class PointAdd extends React.Component {
 
   render() {
     const { inAddMode, ...coordinates } = this.state;
+    const { addPoint } = this.props;
 
     return (
       <div className="PointAdd">
@@ -51,7 +54,9 @@ export class PointAdd extends React.Component {
               handleCoordinateChange={this.handleCoordinateChange}
             />
             <div className="d-flex">
-              <button className="btn btn-success mx-2">✓</button>
+              <button className="btn btn-success mx-2" onClick={addPoint}>
+                ✓
+              </button>
               <button
                 className="btn btn-primary mx-2"
                 onClick={this.toggleAddMode}
