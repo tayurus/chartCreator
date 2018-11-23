@@ -51,7 +51,7 @@ export class Chart extends React.Component {
       .enter()
       .append("text")
       .text(d => d["x"] + "," + d["y"])
-      .attr("x", d => xScale(d["x"] + 10))
+      .attr("x", d => xScale(d["x"]) + 10)
       .attr("y", d => yScale(d["y"]));
 
     const xAxis = d3.axisBottom(xScale);
